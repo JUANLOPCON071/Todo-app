@@ -1,12 +1,29 @@
 # Repositorio base del Curso de Introducción a React.js en Platzi
 
-¡Hola, Platzinauta!
+## Aplicación de Tareas (TODOS)
+Este proyecto es una aplicación de gestión de tareas desarrollada como parte del curso de React.js en Platzi. La aplicación permite a los usuarios crear, completar y eliminar tareas, además de realizar un seguimiento del número total de tareas y de las tareas completadas.
 
-En este repositorio encontrarás el código de todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs). Para empezar solo debes clonar este repositorio (`git clone`), instalar sus dependencias (`npm i`) y ejecutar la aplicación (`npm start`).
+## Funcionalidades:
 
-La rama principal contiene el código con el que eempezamos el curso. En las demás ramas encontrarás el código de las siguientes clases y finalmente el deploy de la aplicación.
+- Creación de Tareas: Agrega nuevas tareas a la lista.
+- Completado de Tareas: Marca las tareas como completadas al hacer clic en ellas.
+- Eliminación de Tareas: Elimina tareas que ya no sean necesarias.
+- Conteo de Tareas: Visualiza el total de tareas y las tareas completadas.
 
-¡Mucha suerte aprendiendo React! #NuncaParesDeAprender
+## Tecnologías y Características:
+Este proyecto emplea varias herramientas y conceptos de React para mejorar la experiencia del usuario y la arquitectura de la aplicación:
+
+- Eventos y Estados Locales: Gestión eficiente de interacciones y estado interno de la aplicación.
+- Persistencia de Datos: Almacenamiento de tareas en localStorage para asegurar que los datos persistan al recargar la página.
+- Custom Hooks: Simplificación de lógica reutilizable en la aplicación.
+- React Context: Manejo de estados globales, facilitando la comunicación entre componentes.
+- React Portals: Renderizado de componentes modales fuera de la jerarquía principal del DOM.
+  
+## Despliegue:
+La aplicación está desplegada en GitHub Pages, permitiendo acceder a una versión en producción desde cualquier navegador.
+
+## Link de Deploy: 
+https://juanlopcon071.github.io/Todo-app/
 
 ## Getting Started with Create React App
 
