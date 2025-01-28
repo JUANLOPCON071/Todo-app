@@ -4,6 +4,7 @@ function useLocalStorage(itemName, initialValue){
   const [ item, setItem ] = useState(initialValue);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
+  const [sincronizedItem, setSincronizedItem] = React.useState(true);
 
     React.useEffect(() => {
       setTimeout(() => {
@@ -21,17 +22,23 @@ function useLocalStorage(itemName, initialValue){
         }
   
         setLoading(false);
+        setSincronizedItem(true)
         } catch (error) {
           setLoading(false);
           setError(true);
         }
       }, 2000);
-    }, [])
+    }, [sincronizedItem])
   
     const saveItem = (newItem) => {
       localStorage.setItem(itemName, JSON.
       stringify(newItem));
       setItem(newItem);
+    }
+
+    const sincronizeItem = () => {
+      setLoading(true);
+      setSincronizedItem(false)
     }
   
     return {
@@ -39,19 +46,9 @@ function useLocalStorage(itemName, initialValue){
       saveItem,
       loading,
       error,
+      sincronizeItem
     }
   
   }
 
   export { useLocalStorage };
-
-  // const defaultTodos = [
-//   { text: "Ir al gym", completed: true },
-//   { text: "Tomar el curso de Intro a React.js", completed: false },
-//   { text: "Comprar Regalo de mi mama", completed: false },
-//   { text: "Mandarme cortar el cabello", completed: false },
-//   { text: "Ver clase sobre estados", completed: true },
-// ]
-
-// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-// localStorage.removeItem('TODOS_V1');
