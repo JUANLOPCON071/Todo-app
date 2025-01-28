@@ -11,7 +11,7 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoForm } from '../TodoForm'
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
-import { ChangeAlertWithStorageListener } from '../ChangeAlert';
+import { ChangeAlert } from '../ChangeAlert';
 
 function App() {
   const {
@@ -49,6 +49,7 @@ function App() {
         loading={loading}
         searchedTodos={searchedTodos}
         searchText={searchValue}
+        sincronize={sincronizeTodos}
         onError={() => <TodosError/>}
         onLoading={() => <TodosLoading/>}
         onEmptyTodos={() => <EmptyTodos/>}
@@ -81,7 +82,7 @@ function App() {
         openModal={openModal} 
         setOpenModal={setOpenModal}
       /> 
-      <ChangeAlertWithStorageListener
+      <ChangeAlert
         sincronize={sincronizeTodos}
         />
       {openModal && (
