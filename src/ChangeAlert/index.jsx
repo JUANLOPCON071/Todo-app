@@ -5,16 +5,19 @@ function ChangeAlert({ sincronize }) {
     const { show, toggleShow } = useStorageListener(sincronize)
     if (show) {
         return (
-            <div className='ChangeAlert'>
-                <p>
-                    Parece que hubo algun cambio en algun ToDo en una 
-                    ventana alterna
-                </p>
-                <button
-                  onClick={() => toggleShow(false)}
-                  >
-                    Recargar pagina
-                </button>
+            <div className='ChangeAlert-overlay'>
+                <div className='ChangeAlert-container'>
+                    <p>
+                        Parece que hubo algun cambio en los ToDos desde una 
+                        ventana alterna
+                    </p>
+                    <button
+                    className='ChangeAlert-button'
+                    onClick={() => toggleShow(false)}
+                    >
+                        Recargar pagina
+                    </button>
+                </div>
             </div>
         )
     } else {
