@@ -37,6 +37,15 @@ function useTodos() {
         newItem[todoIndex].completed = true;
         saveTodos(newItem);
       }
+
+      const unCompleteTodo = (text) => {
+        const newItem = [...todos];
+        const todoIndex = newItem.findIndex(
+          (todo) => todo.text === text
+        );
+        newItem[todoIndex].completed = false;
+        saveTodos(newItem);
+      }
     
       const deleteTodo = (text) => {
         const newItem = [...todos];
@@ -50,6 +59,7 @@ function useTodos() {
       loading,
       error,
       completedTodos,
+      unCompleteTodo,
       totalTodos,
       searchValue,
       setSearchValue,

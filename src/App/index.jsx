@@ -19,6 +19,7 @@ function App() {
     error,
     searchedTodos,
     completeTodo,
+    unCompleteTodo,
     deleteTodo,
     openModal, 
     setOpenModal,
@@ -72,6 +73,7 @@ function App() {
               text={todo.text}
               completed={todo.completed}
               onComplete={() => completeTodo(todo.text)}
+              unComplete={() => unCompleteTodo(todo.text)}
               onDelete={() => deleteTodo(todo.text)}
             />
           )

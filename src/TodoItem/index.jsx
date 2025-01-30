@@ -8,6 +8,7 @@ function TodoItem(props) {
         <CompleteIcon
           completed={props.completed}
           onComplete={props.onComplete}
+          unComplete={props.unComplete}
         />
 
         <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>
