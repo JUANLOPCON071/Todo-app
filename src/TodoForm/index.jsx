@@ -20,7 +20,7 @@ function TodoForm({ setOpenModal, addTodo }) {
 
     return (
         <form onSubmit={onSubmit}>
-            <label>Escribe tu nuevo TODO</label>
+            <label>Escribe tu nueva tarea</label>
             <textarea
               placeholder="Nuevo TODO"
               value={newTodoValue}

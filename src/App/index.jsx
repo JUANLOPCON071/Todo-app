@@ -12,6 +12,7 @@ import { TodoForm } from '../TodoForm'
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
 import { ChangeAlert } from '../ChangeAlert';
+import { CongratulationsAlert } from '../CongratulationsAlert';
 
 function App() {
   const {
@@ -21,6 +22,7 @@ function App() {
     completeTodo,
     unCompleteTodo,
     deleteTodo,
+    resetTodos,
     openModal, 
     setOpenModal,
     completedTodos, 
@@ -28,7 +30,10 @@ function App() {
     searchValue, 
     setSearchValue, 
     addTodo,
-    sincronizeTodos
+    sincronizeTodos,
+    closeCongratAlert,
+    showCongratAler,
+    setShowCongratAlert
   } = useTodos();
 
   return (
@@ -86,7 +91,14 @@ function App() {
       /> 
       <ChangeAlert
         sincronize={sincronizeTodos}
+        completedTodos={completedTodos}
+      />
+      {showCongratAler && completedTodos === totalTodos && totalTodos > 0 && (
+        <CongratulationsAlert 
+            resetTodos={resetTodos}
+            closeCongratAlert={closeCongratAlert}
         />
+      )}
       {openModal && (
         <Modal>
           <TodoForm 

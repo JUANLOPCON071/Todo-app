@@ -11,6 +11,7 @@ function useTodos() {
       } = useLocalStorage('TODOS_V1', []);
       const [ searchValue, setSearchValue ] = React.useState('');
       const [ openModal, setOpenModal ] = React.useState(false);
+      const [showCongratAler, setShowCongratAlert] = React.useState(true)
     
       const completedTodos = todos.filter(
         todo => !!todo.completed
@@ -19,7 +20,7 @@ function useTodos() {
       
       const searchedTodos = todos.filter(
         (todo) => {
-          return todo.text.toLowerCase().includes(searchValue.toLowerCase())
+          return todo.text?.toLowerCase().includes(searchValue.toLowerCase())
         }
       )
 
@@ -55,6 +56,16 @@ function useTodos() {
         newItem.splice(todoIndex,1);
         saveTodos(newItem);
       }
+
+      const resetTodos = () => {
+        saveTodos([])
+        setShowCongratAlert(true)
+      }
+
+      const closeCongratAlert = () => {
+        setShowCongratAlert(false)
+      }
+
     return {
       loading,
       error,
@@ -66,10 +77,14 @@ function useTodos() {
       searchedTodos,
       completeTodo,
       deleteTodo,
+      resetTodos,
       openModal,
       setOpenModal,
       addTodo,
-      sincronizeTodos
+      sincronizeTodos,
+      closeCongratAlert,
+      showCongratAler,
+      setShowCongratAlert
     }
 }
 
