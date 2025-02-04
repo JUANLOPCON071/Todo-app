@@ -15,26 +15,30 @@ import { ChangeAlert } from '../ChangeAlert';
 import { CongratulationsAlert } from '../CongratulationsAlert';
 
 function App() {
+  const { states, stateUpdaters } = useTodos();
+
   const {
     loading,
     error,
+    totalTodos,
+    completedTodos,
+    searchValue,
     searchedTodos,
-    completeTodo,
+    openModal,
+    showCongratAler
+  } = states;
+
+  const {
     unCompleteTodo,
+    setSearchValue,
+    completeTodo,
     deleteTodo,
     resetTodos,
-    openModal, 
     setOpenModal,
-    completedTodos, 
-    totalTodos, 
-    searchValue, 
-    setSearchValue, 
     addTodo,
     sincronizeTodos,
     closeCongratAlert,
-    showCongratAler,
-    setShowCongratAlert
-  } = useTodos();
+  } = stateUpdaters;
 
   return (
     <React.Fragment>

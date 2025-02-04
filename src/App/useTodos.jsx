@@ -66,26 +66,29 @@ function useTodos() {
         setShowCongratAlert(false)
       }
 
-    return {
-      loading,
+      const states = {loading,
       error,
-      completedTodos,
-      unCompleteTodo,
       totalTodos,
+      completedTodos,
       searchValue,
-      setSearchValue,
       searchedTodos,
+      openModal,
+      showCongratAler,
+      }
+      
+      const stateUpdaters = {unCompleteTodo,
+      setSearchValue,
       completeTodo,
       deleteTodo,
       resetTodos,
-      openModal,
       setOpenModal,
       addTodo,
       sincronizeTodos,
       closeCongratAlert,
-      showCongratAler,
       setShowCongratAlert
-    }
+      }
+
+      return { states, stateUpdaters }
 }
 
 export { useTodos };
