@@ -33,6 +33,6 @@
   },
   "homepage": "htts://JUANLOPCON071.github.io/Todo-app",
   "devDependencies": {
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.3.0"
   }
 }
