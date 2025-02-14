@@ -10,7 +10,6 @@ function useTodos() {
         error,
       } = useLocalStorage('TODOS_V2', []);
       const [ searchValue, setSearchValue ] = React.useState('');
-      const [ openModal, setOpenModal ] = React.useState(false);
       const [showCongratAler, setShowCongratAlert] = React.useState(true)
     
       const completedTodos = todos.filter(
@@ -41,6 +40,15 @@ function useTodos() {
           (todo) => todo.id === id
         );
         newItem[todoIndex].completed = true;
+        saveTodos(newItem);
+      }
+
+      const editTodo = (id, newText) => {
+        const newItem = [...todos];
+        const todoIndex = newItem.findIndex(
+          (todo) => todo.id === id
+        );
+        newItem[todoIndex].text = newText;
         saveTodos(newItem);
       }
 
@@ -79,7 +87,6 @@ function useTodos() {
         completeTodo,
         searchValue,
         searchedTodos,
-        openModal,
         showCongratAler,
       }
       
@@ -88,8 +95,8 @@ function useTodos() {
         setSearchValue,
         deleteTodo,
         resetTodos,
-        setOpenModal,
         addTodo,
+        editTodo,
         sincronizeTodos,
         closeCongratAlert,
         setShowCongratAlert
@@ -102,7 +109,7 @@ function newTodoId(todoList) {
   if (!todoList.length) {
     return 1;
   }
-  
+
   const idList = todoList.map(todo => todo.id);
   const idMax = Math.max(...idList);
   return idMax + 1;
