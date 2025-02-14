@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
 import { useTodos } from '../useTodos';
 import { TodoHeader } from '../../ui/TodoHeader';
 import { TodoCounter  } from '../../ui/TodoCounter';
@@ -8,13 +9,12 @@ import { TodoItem } from '../../ui/TodoItem';
 import { TodosError } from '../../ui/TodosError';
 import { TodosLoading } from '../../ui/TodosLoading';
 import { EmptyTodos } from '../../ui/EmptyTodos';
-import { TodoForm } from '../../ui/TodoForm'
 import { CreateTodoButton } from '../../ui/CreateTodoButton';
-import { Modal } from '../../ui/Modal';
 import { ChangeAlert } from '../../ui/ChangeAlert';
 import { CongratulationsAlert } from '../../ui/CongratulationsAlert';
 
 function HomePage() {
+  const navigate = useNavigate();
   const { states, stateUpdaters } = useTodos();
 
   const {
@@ -25,7 +25,7 @@ function HomePage() {
     completeTodo,
     searchValue,
     searchedTodos,
-    openModal,
+    // openModal,
     showCongratAler
   } = states;
 
@@ -34,7 +34,7 @@ function HomePage() {
     setSearchValue,
     deleteTodo,
     resetTodos,
-    setOpenModal,
+    // setOpenModal,
     addTodo,
     sincronizeTodos,
     closeCongratAlert,
@@ -82,7 +82,7 @@ function HomePage() {
               text={todo.text}
               completed={todo.completed}
               onComplete={() => completeTodo(todo.id)}
-              onEdit={() => console.log('Editar tarea')}
+              onEdit={() => navigate('/edit/' + todo.id)}
               unComplete={() => unCompleteTodo(todo.id)}
               onDelete={() => deleteTodo(todo.id)}
             />
@@ -91,8 +91,7 @@ function HomePage() {
       </TodoList>
 
       <CreateTodoButton 
-        openModal={openModal} 
-        setOpenModal={setOpenModal}
+        onClick={() => navigate('/new')}
       /> 
       <ChangeAlert
         sincronize={sincronizeTodos}
@@ -104,14 +103,14 @@ function HomePage() {
             closeCongratAlert={closeCongratAlert}
         />
       )}
-      {openModal && (
+      {/* {openModal && (
         <Modal>
           <TodoForm 
             setOpenModal={setOpenModal}
             addTodo={addTodo}
           />
         </Modal>
-      )}
+      )} */}
     </React.Fragment>
   );
 }
