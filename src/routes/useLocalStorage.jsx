@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function useLocalStorage(itemName, initialValue){
   const [state, dispatch] = React.useReducer(reducer, initialState({ initialValue }));
@@ -50,7 +50,7 @@ function useLocalStorage(itemName, initialValue){
           onError(error)
           // setError(true);
         }
-    }, 3000);
+    }, 1000);
   }, [sincronizedItem])
 
   const saveItem = (newItem) => {

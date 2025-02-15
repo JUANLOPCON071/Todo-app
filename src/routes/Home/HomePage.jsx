@@ -25,7 +25,6 @@ function HomePage() {
     completeTodo,
     searchValue,
     searchedTodos,
-    // openModal,
     showCongratAler
   } = states;
 
@@ -34,8 +33,6 @@ function HomePage() {
     setSearchValue,
     deleteTodo,
     resetTodos,
-    // setOpenModal,
-    addTodo,
     sincronizeTodos,
     closeCongratAlert,
   } = stateUpdaters;
@@ -82,7 +79,14 @@ function HomePage() {
               text={todo.text}
               completed={todo.completed}
               onComplete={() => completeTodo(todo.id)}
-              onEdit={() => navigate('/edit/' + todo.id)}
+              onEdit={() => {
+                navigate(
+                  '/edit/' + todo.id,
+                {
+                  state: { todo }
+                }
+              )
+            }}
               unComplete={() => unCompleteTodo(todo.id)}
               onDelete={() => deleteTodo(todo.id)}
             />
